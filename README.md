@@ -5,7 +5,7 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 
 ## Installation
 
-drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containing the other LaTeX nbconvert templates. It should be something like: 
+drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
 
 ## Use
