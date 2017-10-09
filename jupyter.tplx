@@ -1,0 +1,36 @@
+
+% Default to the notebook output style
+((* if not cell_style is defined *))
+    ((* set cell_style = 'style_jupyter.tplx' *))
+((* endif *))
+
+% Inherit from the specified cell style.
+((* extends cell_style *))
+
+
+%===============================================================================
+% Latex Article
+%===============================================================================
+
+((* block docclass *))
+\documentclass[11pt]{article}
+((* endblock docclass *))
+
+((* block packages *))
+    \usepackage{parskip}
+    \setcounter{secnumdepth}{0} %Suppress section numbers
+    ((( super() )))
+((* endblock packages *))
+
+((* block definitions *))
+    %MathJax Compatibility
+    \def\TeX{\mbox{T\kern-.14em\lower.5ex\hbox{E}\kern-.115em X}}
+    \def\LaTeX{\mbox{L\kern-.325em\raise.21em\hbox{$\scriptstyle{A}$}\kern-.17em}\TeX}
+    ((( super() )))
+((* endblock definitions *))
+
+((* block margins *))
+    \geometry{verbose,tmargin=.7in,bmargin=1in,lmargin=1.1in,rmargin=.7in}
+((* endblock margins *))
+
+((* block maketitle *))((* endblock maketitle *))

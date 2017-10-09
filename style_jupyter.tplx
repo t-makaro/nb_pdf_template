@@ -1,0 +1,96 @@
+((= IPython input/output style =))
+
+((*- extends 'base.tplx' -*))
+
+% Custom definitions
+
+((* block packages *))
+    \usepackage{fancybox}
+    ((( super() )))
+((* endblock packages*))
+
+((* block definitions *))
+    ((( super() )))
+    % Pygments definitions
+    ((( resources.latex.pygments_definitions )))
+
+    % Exact colors from NB
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{grey}{HTML}{CFCFCF}
+    \definecolor{light-grey}{HTML}{F7F7F7}
+    
+    \newenvironment{InVerbatim}{\VerbatimEnvironment%
+    	\noindent\begin{Sbox}
+    		\begin{minipage}[t]{\dimexpr\linewidth-2\fboxrule}
+    			\begin{Verbatim}
+    			}{%
+    			\end{Verbatim}%
+    		\end{minipage}%
+    	\end{Sbox}%
+    	\fcolorbox{grey}{light-grey}{\TheSbox}%
+    }
+    \newenvironment{OutVerbatim}{\VerbatimEnvironment%
+		\noindent\begin{Sbox}
+			\begin{minipage}[t]{\dimexpr\linewidth-2\fboxrule}
+				\begin{Verbatim}
+				}{%
+				\end{Verbatim}%
+			\end{minipage}%
+		\end{Sbox}%
+		{\TheSbox}%
+	}
+    
+    \newlength{\promptlength}
+((* endblock definitions *))
+
+%===============================================================================
+% Input
+%===============================================================================
+
+((* block input scoped *))
+    ((( draw_cell(cell.source | highlight_code(strip_verbatim=True), cell, 'In', 'incolor') )))
+((* endblock input *))
+
+
+%===============================================================================
+% Output
+%===============================================================================
+
+((* block execute_result scoped *))
+    ((*- for type in output.data | filter_data_type -*))
+        ((*- if type in ['text/plain']*))
+            ((( draw_cell(output.data['text/plain'] | escape_latex, cell, 'Out', 'outcolor') )))
+        ((* else -*))
+            ((( " " )))
+            ((( draw_prompt(cell, 'Out ', 'outcolor') )))((( super() )))
+        ((*- endif -*))
+    ((*- endfor -*))
+((* endblock execute_result *))
+
+
+%==============================================================================
+% Support Macros
+%==============================================================================
+
+% Name: draw_cell
+% Purpose: Renders an output/input prompt
+((* macro draw_cell(text, cell, prompt, prompt_color) -*))
+((( draw_prompt(cell, prompt, prompt_color) )))
+\begin{((( prompt ~ 'Verbatim')))}[commandchars=\\\{\}]
+((( text )))
+\end{((( prompt ~ 'Verbatim')))}
+((*- endmacro *))
+
+% Name: draw_prompt
+% Purpose: Renders an output/input prompt
+((* macro draw_prompt(cell, prompt, prompt_color) -*))
+    ((*- if cell.execution_count is defined -*))
+    ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
+    ((*- else -*))
+    ((*- set execution_count = " " -*))
+    ((*- endif -*))
+\settowidth{\promptlength}{ ((( prompt ~ ' [' ~ execution_count ~ ']' ))) }
+\hspace{-\promptlength}\hspace{-5pt}
+((('{\color{' ~ prompt_color ~ '}' ~ prompt ~ ' [{\\color{' ~ prompt_color ~ '}' ~ execution_count ~ '}]:}' )))
+((*- endmacro *))
