@@ -21,6 +21,7 @@ I have yet to discover a way to get the 'download as pdf' option from jupyter no
 4. In/Out will move to the left as the execution count increases instead of pushing code to the right.
 5. $\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail
 6. In/Out text colours updated to match Jupyter
+7. Markdown paragraphs are no longer auto-indented in the pdf
 
 ## Issues (in common with default template)
 1. raw pyout text will not wrap text
