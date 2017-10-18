@@ -24,8 +24,10 @@
 
 ((* block definitions *))
     %MathJax Compatibility
-    \def\TeX{\mbox{T\kern-.14em\lower.5ex\hbox{E}\kern-.115em X}}
-    \def\LaTeX{\mbox{L\kern-.325em\raise.21em\hbox{$\scriptstyle{A}$}\kern-.17em}\TeX}
+    \let\Oldtex\TeX
+    \let\Oldlatex\LaTeX
+    \renewcommand{\TeX}{\textrm{\Oldtex}}
+    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
     ((( super() )))
 ((* endblock definitions *))
 
