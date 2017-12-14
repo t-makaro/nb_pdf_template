@@ -26,13 +26,14 @@
     %MathJax Compatibility
     \let\Oldtex\TeX
     \let\Oldlatex\LaTeX
-    \renewcommand{\TeX}{\textrm{\Oldtex}}
-    \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
+    \renewcommand{\TeX}{\ifmmode \textrm{\Oldtex} \else \textbackslash TeX \fi}
+    \renewcommand{\LaTeX}{\ifmmode \Oldlatex \else \textbackslash LaTeX \fi}
     ((( super() )))
 ((* endblock definitions *))
 
 ((* block margins *))
-    \geometry{verbose,tmargin=.7in,bmargin=1in,lmargin=1.1in,rmargin=.7in}
+    \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=1.1in,rmargin=.5in}
+    \renewcommand{\paragraph}{~\newline\textbf}
 ((* endblock margins *))
 
 ((* block maketitle *))((* endblock maketitle *))
