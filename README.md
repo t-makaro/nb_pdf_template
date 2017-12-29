@@ -1,3 +1,4 @@
+
 # jupyter.tplx
 A more accurate representation of jupyter notebooks when converting to pdfs.
 
@@ -29,3 +30,15 @@ I have yet to discover a way to get the 'download as pdf' option from jupyter no
 
 ## Issues (unique to this template)
 1. If a code cell is too long to fit on one page it will not overflow onto the next page.
+
+## Tips (Good for any template)
+1. Want to remove page numbers? Add "\pagenumbering{gobble}" to a raw cell at the top of the notebook.
+2. Want to set page numbers to start at a specific number? Add "\setcounter{page}{number_here}" to a raw cell at the top of the notebook.
+3. Want to re-add the maketitle? Add:
+```
+\author{name}
+\title{title}
+\date{date}
+\maketitle
+```
+to a raw cell at the top of the notebook to customize the maketitle.
