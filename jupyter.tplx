@@ -23,12 +23,12 @@
 ((* endblock packages *))
 
 ((* block definitions *))
+    ((( super() )))
     %MathJax Compatibility
     \let\Oldtex\TeX
     \let\Oldlatex\LaTeX
     \renewcommand{\TeX}{\ifmmode \textrm{\Oldtex} \else \textbackslash TeX \fi}
     \renewcommand{\LaTeX}{\ifmmode \Oldlatex \else \textbackslash LaTeX \fi}
-    ((( super() )))
 ((* endblock definitions *))
 
 ((* block margins *))
