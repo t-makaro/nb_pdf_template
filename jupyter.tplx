@@ -23,10 +23,10 @@
 ((* endblock packages *))
 
 ((* block definitions *))
+    \let\Oldtex\TeX     % provide compatibility with nbconvert <= 5.3.1
+    \let\Oldlatex\LaTeX % pre-included in nbconvert > 5.3.1 so redundant
     ((( super() )))
-    %MathJax Compatibility
-    \let\Oldtex\TeX
-    \let\Oldlatex\LaTeX
+    %Updated MathJax Compatibility (if future behaviour of the notebook changes this may be removed)
     \renewcommand{\TeX}{\ifmmode \textrm{\Oldtex} \else \textbackslash TeX \fi}
     \renewcommand{\LaTeX}{\ifmmode \Oldlatex \else \textbackslash LaTeX \fi}
 ((* endblock definitions *))
