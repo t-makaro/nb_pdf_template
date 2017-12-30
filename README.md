@@ -3,6 +3,15 @@ A more accurate representation of jupyter notebooks when converting to pdfs.
 
 This template was designed to make converted jupyter notebooks look (almost) identical to the actual notebook. If something doesn't exist in the original notebook then it doesn't belong in the conversion.
 
+## Improvements
+1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook)
+2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't)
+3. **BOXES!** are drawn around code cells.
+4. In/Out will move to the left as the execution count increases instead of pushing code to the right.
+5. $\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail
+6. In/Out text colours updated to match Jupyter
+7. Markdown paragraphs are no longer auto-indented in the pdf
+
 ## Installation
 
 ### Manually:
@@ -20,16 +29,11 @@ python -m nb_pdf_template.install.py
 From the command line:
 > jupyter nbconvert --to pdf filename.ipynb --template jupyter.tplx
 
-I have yet to discover a way to get the 'download as pdf' option from jupyter notebook to default to this template.
-
-## Improvements
-1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook)
-2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't)
-3. **BOXES!** are drawn around code cells.
-4. In/Out will move to the left as the execution count increases instead of pushing code to the right.
-5. $\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail
-6. In/Out text colours updated to match Jupyter
-7. Markdown paragraphs are no longer auto-indented in the pdf
+I have yet to discover a way to get the 'download as pdf' option from jupyter notebook to default to this template. However, adding
+```
+c.LatexExporter.template_file = 'jupyter.tplx'
+```
+to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template jupyter.tplx".
 
 ## Issues (in common with default template)
 1. raw pyout text will not wrap text
