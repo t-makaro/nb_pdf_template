@@ -1,4 +1,3 @@
-
 # jupyter.tplx
 A more accurate representation of jupyter notebooks when converting to pdfs.
 
@@ -6,8 +5,16 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 
 ## Installation
 
+### Manually:
 drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
+
+### Automatically:
+Warning this was only been tested on windows.
+```
+pip install nb_pdf_template
+python -m nb_pdf_template.install.py
+```
 
 ## Use
 From the command line:
