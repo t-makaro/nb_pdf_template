@@ -19,7 +19,7 @@ drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containin
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
 
 ### Automatically:
-Warning this was only been tested on windows.
+Warning this was only been tested on windows. (pip install currently broken but cloning the repository and running the second line will work)
 ```
 pip install nb_pdf_template
 python -m nb_pdf_template.install.py
@@ -29,11 +29,11 @@ python -m nb_pdf_template.install.py
 From the command line:
 > jupyter nbconvert --to pdf filename.ipynb --template jupyter.tplx
 
-I have yet to discover a way to get the 'download as pdf' option from jupyter notebook to default to this template. However, adding
+Adding:
 ```
 c.LatexExporter.template_file = 'jupyter.tplx'
 ```
-to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template jupyter.tplx".
+to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template jupyter.tplx", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
 
 ## Issues (in common with default template)
 1. raw pyout text will not wrap text
