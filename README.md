@@ -19,7 +19,7 @@ drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containin
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
 
 ### Automatically:
-Warning this was only been tested on windows.
+Warning this has only been tested on windows. It has been reported to work on MacOS as well.
 ```
 pip install nb_pdf_template
 python -m nb_pdf_template.install
