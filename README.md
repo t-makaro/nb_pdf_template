@@ -22,7 +22,7 @@ drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containin
 Warning this was only been tested on windows.
 ```
 pip install nb_pdf_template
-python -m nb_pdf_template.install.py
+python -m nb_pdf_template.install
 ```
 
 ## Use
