@@ -40,7 +40,7 @@ to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template 
 2. code cells will not wrap text (at 86 characters the text will spill into the margin)
 
 ## Issues (unique to this template)
-1. If a code cell is too long to fit on one page it will not overflow onto the next page.
+~~1. If a code cell is too long to fit on one page it will not overflow onto the next page.~~ Fixed!
 
 ## Tips (Good for any template)
 1. Want to remove page numbers? Add "\pagenumbering{gobble}" to a raw cell at the top of the notebook.
