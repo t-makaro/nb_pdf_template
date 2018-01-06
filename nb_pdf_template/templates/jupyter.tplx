@@ -33,7 +33,7 @@
 
 ((* block margins *))
     \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=1.1in,rmargin=.5in}
-    \renewcommand{\paragraph}{~\newline\textbf}
+    \renewcommand{\paragraph}{\textbf}
 ((* endblock margins *))
 
 ((* block maketitle *))((* endblock maketitle *))

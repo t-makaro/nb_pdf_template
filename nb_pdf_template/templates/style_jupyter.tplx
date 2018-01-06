@@ -5,7 +5,10 @@
 % Custom definitions
 
 ((* block packages *))
-    \usepackage{fancybox}
+    %\usepackage{fancybox}
+    \usepackage[breakable]{tcolorbox}
+    \tcbset{nobeforeafter}
+    \usepackage{needspace}
     ((( super() )))
 ((* endblock packages*))
 
@@ -21,24 +24,19 @@
     \definecolor{light-grey}{HTML}{F7F7F7}
     
     \newenvironment{InVerbatim}{\VerbatimEnvironment%
-    	\noindent\begin{Sbox}
-    		\begin{minipage}[t]{\dimexpr\linewidth-2\fboxrule}
-    			\begin{Verbatim}
-    			}{%
-    			\end{Verbatim}%
-    		\end{minipage}%
-    	\end{Sbox}%
-    	\fcolorbox{grey}{light-grey}{\TheSbox}%
-    }
-    \newenvironment{OutVerbatim}{\VerbatimEnvironment%
-		\noindent\begin{Sbox}
-			\begin{minipage}[t]{\dimexpr\linewidth-2\fboxrule}
-				\begin{Verbatim}
-				}{%
-				\end{Verbatim}%
-			\end{minipage}%
-		\end{Sbox}%
-		{\TheSbox}%
+		\begin{tcolorbox}[breakable, size=fbox, boxrule=.7pt, pad at break*=1mm,
+			colback=light-grey,colframe=grey]
+			\begin{Verbatim}
+			}{%
+			\end{Verbatim}%
+		\end{tcolorbox}%
+	}
+	\newenvironment{OutVerbatim}{\VerbatimEnvironment%
+		\begin{tcolorbox}[breakable,boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0]
+			\begin{Verbatim}
+			}{%
+			\end{Verbatim}%
+		\end{tcolorbox}%
 	}
     
     \newlength{\promptlength}
@@ -63,7 +61,7 @@
             ((( draw_cell(output.data['text/plain'] | escape_latex, cell, 'Out', 'outcolor') )))
         ((* else -*))
             ((( " " )))
-            ((( draw_prompt(cell, 'Out ', 'outcolor') )))((( super() )))
+            ((( draw_prompt(cell, 'Out', 'outcolor') )))((( super() )))
         ((*- endif -*))
     ((*- endfor -*))
 ((* endblock execute_result *))
@@ -90,7 +88,9 @@
     ((*- else -*))
     ((*- set execution_count = " " -*))
     ((*- endif -*))
+\needspace{1.1cm}
 \settowidth{\promptlength}{ ((( prompt ~ ' [' ~ execution_count ~ ']' ))) }
 \hspace{-\promptlength}\hspace{-5pt}
 ((('{\color{' ~ prompt_color ~ '}' ~ prompt ~ ' [{\\color{' ~ prompt_color ~ '}' ~ execution_count ~ '}]:}' )))
+\vspace{-2.7ex}
 ((*- endmacro *))
