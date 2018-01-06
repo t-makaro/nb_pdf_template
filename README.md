@@ -43,8 +43,8 @@ to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template 
 ~~1. If a code cell is too long to fit on one page it will not overflow onto the next page.~~ Fixed!
 
 ## Tips (Good for any template)
-1. Want to remove page numbers? Add "\pagenumbering{gobble}" to a raw cell at the top of the notebook.
-2. Want to set page numbers to start at a specific number? Add "\setcounter{page}{number_here}" to a raw cell at the top of the notebook.
+1. Want to remove page numbers? Add ```\pagenumbering{gobble}``` to a raw cell at the top of the notebook.
+2. Want to set page numbers to start at a specific number? Add ```\setcounter{page}{number_here}``` to a raw cell at the top of the notebook.
 3. Want to re-add the maketitle? Add:
 ```
 \author{name}
