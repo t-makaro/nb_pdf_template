@@ -11,6 +11,7 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 5. $\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail
 6. In/Out text colours updated to match Jupyter
 7. Markdown paragraphs are no longer auto-indented in the pdf
+8. Syntax highlighting improvements. (Bonus if using XeLaTeX)
 
 ## Installation
 

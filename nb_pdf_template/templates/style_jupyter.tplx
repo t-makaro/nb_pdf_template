@@ -17,6 +17,44 @@
     % Pygments definitions
     ((( resources.latex.pygments_definitions )))
 
+%Reconfigured pygments
+\makeatletter
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
+\expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}} %imports
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %in
+\makeatother
+
+\newif\ifcode
+\codefalse
+\definecolor{purp}{HTML}{AA22FF}
+%If using XeLaTeX, use magic to highlight operators in purple.
+\ifx\XeTeXcharclass\undefined
+\else
+\XeTeXinterchartokenstate = 1
+\newXeTeXintercharclass \mycharclassPurple
+\XeTeXcharclass `\* \mycharclassPurple
+\XeTeXcharclass `\/ \mycharclassPurple
+\XeTeXcharclass `\+ \mycharclassPurple
+\XeTeXcharclass `\- \mycharclassPurple
+\XeTeXcharclass `\@ \mycharclassPurple
+\XeTeXcharclass `\% \mycharclassPurple
+\XeTeXcharclass `\& \mycharclassPurple
+\XeTeXcharclass `\| \mycharclassPurple
+\XeTeXcharclass `\! \mycharclassPurple
+\XeTeXcharclass `\< \mycharclassPurple
+\XeTeXcharclass `\> \mycharclassPurple
+\XeTeXcharclass `\~ \mycharclassPurple
+\XeTeXcharclass `\^ \mycharclassPurple
+\XeTeXcharclass `\? \mycharclassPurple
+
+\XeTeXinterchartoks 0 \mycharclassPurple   = {\bgroup\ifcode\color{purp}\else\fi}
+\XeTeXinterchartoks 4095 \mycharclassPurple = {\bgroup\ifcode\color{purp}\else\fi}
+
+\XeTeXinterchartoks \mycharclassPurple 0   = {\egroup}
+\XeTeXinterchartoks \mycharclassPurple 4095 = {\egroup}
+\fi %end magical operator highlighting
+%End Reconfigured Pygments
+   
     % Exact colors from NB
     \definecolor{incolor}{HTML}{303F9F}
     \definecolor{outcolor}{HTML}{D84315}
@@ -25,10 +63,10 @@
     
     \newenvironment{InVerbatim}{\VerbatimEnvironment%
 		\begin{tcolorbox}[breakable, size=fbox, boxrule=.7pt, pad at break*=1mm,
-			colback=light-grey,colframe=grey]
+			colback=light-grey,colframe=grey]\codetrue
 			\begin{Verbatim}
 			}{%
-			\end{Verbatim}%
+			\end{Verbatim}\codefalse%
 		\end{tcolorbox}%
 	}
 	\newenvironment{OutVerbatim}{\VerbatimEnvironment%
