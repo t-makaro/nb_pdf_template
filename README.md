@@ -3,6 +3,8 @@ A more accurate representation of jupyter notebooks when converting to pdfs.
 
 This template was designed to make converted jupyter notebooks look (almost) identical to the actual notebook. If something doesn't exist in the original notebook then it doesn't belong in the conversion.
 
+This template is ready for anyone to use.
+
 ## Improvements
 1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook)
 2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't)
@@ -28,7 +30,9 @@ python -m nb_pdf_template.install
 
 ## Use
 From the command line:
-> jupyter nbconvert --to pdf filename.ipynb --template jupyter.tplx
+```
+jupyter nbconvert --to pdf filename.ipynb --template jupyter.tplx
+```
 
 Adding:
 ```
@@ -37,11 +41,16 @@ c.LatexExporter.template_file = 'jupyter.tplx'
 to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template jupyter.tplx", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
 
 ## Issues (in common with default template)
-1. raw pyout text will not wrap text
-2. code cells will not wrap text (at 86 characters the text will spill into the margin)
+1. raw pyout text, and code cells will not wrap text (at 87 characters the text will spill into the margin)
 
-## Issues (unique to this template)
-~~1. If a code cell is too long to fit on one page it will not overflow onto the next page.~~ Fixed!
+## Todo
+- [ ] Rename "jupyter.tplx" to "classic.tplx" and create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) (Easy)
+- [ ] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
+- [ ] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
+- [ ] Let the ```--no-prompt``` nbconvert flag remove prompts. (Easy, but compatibility issues with older versions of nbconvert maybe?)
+- [ ] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
+- [x] Improve syntax highlighting. (Hard)
+- [x] Fix page breaks. (Moderate)
 
 ## Tips (Good for any template)
 1. Want to remove page numbers? Add ```\pagenumbering{gobble}``` to a raw cell at the top of the notebook.
@@ -54,3 +63,5 @@ to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template 
 \maketitle
 ```
 to a raw cell at the top of the notebook to customize the maketitle.
+
+4. Typing ```\insertword``` in a markdown cell in Jupyter Notebook can cause conversion to fail since LaTeX will attempt to compile the command. Instead use ```\\insertword``` since markdown will only render one backslash, and the conversion to use a plain text backslash.
