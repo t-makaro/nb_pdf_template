@@ -17,6 +17,7 @@
     % Pygments definitions
     ((( resources.latex.pygments_definitions )))
 
+    ((* block repygments *))
 %Reconfigured pygments
 \makeatletter
 \expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
@@ -54,6 +55,7 @@
 \XeTeXinterchartoks \mycharclassPurple 4095 = {\egroup}
 \fi %end magical operator highlighting
 %End Reconfigured Pygments
+((* endblock repygments *))
    
     % Exact colors from NB
     \definecolor{incolor}{HTML}{303F9F}
@@ -61,6 +63,15 @@
     \definecolor{grey}{HTML}{CFCFCF}
     \definecolor{light-grey}{HTML}{F7F7F7}
     
+    % needed definitions
+    \newif\ifleftmargins
+    \newlength{\promptlength}
+    % cell style settings
+    ((* block style_settings *))
+        \leftmarginsfalse
+    ((* endblock style_settings *))
+    
+    % environments
     \newenvironment{InVerbatim}{\VerbatimEnvironment%
 		\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,
 			colback=light-grey,colframe=grey]
@@ -77,7 +88,6 @@
 		\end{tcolorbox}%
 	}
     
-    \newlength{\promptlength}
 ((* endblock definitions *))
 
 %===============================================================================
@@ -128,7 +138,7 @@
     ((*- endif -*))
 \needspace{1.1cm}
 \settowidth{\promptlength}{ ((( prompt ~ ' [' ~ execution_count ~ ']' ))) }
-\hspace{-\promptlength}\hspace{-5pt}
+\ifleftmargins\hspace{-\promptlength}\hspace{-5pt}\fi
 ((('{\color{' ~ prompt_color ~ '}' ~ prompt ~ ' [{\\color{' ~ prompt_color ~ '}' ~ execution_count ~ '}]:}' )))
-\vspace{-2.7ex}
+\ifleftmargins\vspace{-2.7ex}\fi
 ((*- endmacro *))

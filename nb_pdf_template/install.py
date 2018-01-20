@@ -2,7 +2,7 @@ import os
 import shutil
 import nbconvert
 
-templates = {"jupyter.tplx","style_jupyter.tplx","classic.tplx"}
+templates = {"jupyter.tplx","style_jupyter.tplx","classic.tplx","classicm.tplx"}
 nbconvert_path = os.path.dirname(nbconvert.__file__)
 to_path = os.path.abspath(os.path.join(nbconvert_path,"templates","latex"))
 if not os.path.isdir(to_path):
