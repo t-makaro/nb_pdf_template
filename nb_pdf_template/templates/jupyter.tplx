@@ -29,11 +29,14 @@
     %Updated MathJax Compatibility (if future behaviour of the notebook changes this may be removed)
     \renewcommand{\TeX}{\ifmmode \textrm{\Oldtex} \else \textbackslash TeX \fi}
     \renewcommand{\LaTeX}{\ifmmode \Oldlatex \else \textbackslash LaTeX \fi}
+    
+    % Header Adjustments
+    \renewcommand{\paragraph}{\textbf}
+    \renewcommand{\subparagraph}[1]{\textit{\textbf{#1}}}
 ((* endblock definitions *))
 
 ((* block margins *))
     \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=1.1in,rmargin=.5in}
-    \renewcommand{\paragraph}{\textbf}
 ((* endblock margins *))
 
 ((* block maketitle *))((* endblock maketitle *))
