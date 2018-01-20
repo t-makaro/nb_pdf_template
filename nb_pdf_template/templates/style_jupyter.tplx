@@ -22,14 +22,14 @@
 \expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
 \expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}} %imports
 \expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %in
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{\codetrue##1\codefalse}}} %operators
 \makeatother
 
 \newif\ifcode
 \codefalse
 \definecolor{purp}{HTML}{AA22FF}
 %If using XeLaTeX, use magic to highlight operators in purple.
-\ifx\XeTeXcharclass\undefined
-\else
+\ifdefined\XeTeXcharclass
 \XeTeXinterchartokenstate = 1
 \newXeTeXintercharclass \mycharclassPurple
 \XeTeXcharclass `\* \mycharclassPurple
@@ -63,10 +63,10 @@
     
     \newenvironment{InVerbatim}{\VerbatimEnvironment%
 		\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,
-			colback=light-grey,colframe=grey]\codetrue
+			colback=light-grey,colframe=grey]
 			\begin{Verbatim}
 			}{%
-			\end{Verbatim}\codefalse%
+			\end{Verbatim}%
 		\end{tcolorbox}%
 	}
 	\newenvironment{OutVerbatim}{\VerbatimEnvironment%
