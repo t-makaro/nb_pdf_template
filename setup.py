@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='nb_pdf_template',
-      version='1.1.0',
+      version='1.1.1',
       description='LaTeX templates for jupyter notebook conversion to pdf',
       url='https://github.com/t-makaro/nb_pdf_template',
       author='Tyler Makaro',
@@ -9,9 +9,6 @@ setup(name='nb_pdf_template',
       license='MIT',
       packages=['nb_pdf_template'],
       include_package_data = True,
-      install_requires=[
-          'nbconvert',
-      ],
       classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.6',
