@@ -42,7 +42,7 @@ to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template 
 Replace ```classic.tplx``` with your template of choice.
 
 ### Templates
-This package offer the following templates:
+This package offers the following templates:
 
 Template | Use
 ---------|-------
