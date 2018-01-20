@@ -1,6 +1,5 @@
-# jupyter.tplx
+# classic.tplx
 A more accurate representation of jupyter notebooks when converting to pdfs.
-
 This template was designed to make converted jupyter notebooks look (almost) identical to the actual notebook. If something doesn't exist in the original notebook then it doesn't belong in the conversion.
 
 This template is ready for anyone to use.
@@ -18,7 +17,7 @@ This template is ready for anyone to use.
 ## Installation
 
 ### Manually:
-drop the files "jupyter.tplx" and "style_jupyter.tplx" into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
+drop all of the "*.tplx" files into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
 
 ### Automatically:
@@ -31,22 +30,34 @@ python -m nb_pdf_template.install
 ## Use
 From the command line:
 ```
-jupyter nbconvert --to pdf filename.ipynb --template jupyter.tplx
+jupyter nbconvert --to pdf filename.ipynb --template classic.tplx
 ```
 
 Adding:
 ```
-c.LatexExporter.template_file = 'jupyter.tplx'
+c.LatexExporter.template_file = 'classic.tplx'
 ```
-to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template jupyter.tplx", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
+to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classic.tplx", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
+
+Replace ```classic.tplx``` with your template of choice.
+
+### Templates
+This package offer the following templates:
+
+Template | Use
+---------|-------
+classic.tplx | For accurate recreation of the default Jupyter Notebook Style
+classicm.tplx | m for modified. Similar to classic.tplx but in/out prompt are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider
+jupyter.tplx | Depreciated simply redirects to classic.tplx will be remove in the future
+style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Issues (in common with default template)
 1. raw pyout text, and code cells will not wrap text (at 87 characters the text will spill into the margin)
 
 ## Todo
-- [ ] Rename "jupyter.tplx" to "classic.tplx" and create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) (Easy)
-- [ ] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
-- [ ] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
+- [ ] Create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) (Easy)
+- [x] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
+- [x] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
 - [ ] Let the ```--no-prompt``` nbconvert flag remove prompts. (Easy, but compatibility issues with older versions of nbconvert maybe?)
 - [ ] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
 - [x] Improve syntax highlighting. (Hard)
