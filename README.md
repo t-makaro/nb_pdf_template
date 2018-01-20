@@ -64,4 +64,4 @@ to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template 
 ```
 to a raw cell at the top of the notebook to customize the maketitle.
 
-4. Typing ```\insertword``` in a markdown cell in Jupyter Notebook can cause conversion to fail since LaTeX will attempt to compile the command. Instead use ```\\insertword``` since markdown will only render one backslash, and the conversion to use a plain text backslash.
+4. Typing ```\insertword``` in a markdown cell in Jupyter Notebook can cause conversion to fail since LaTeX will attempt to compile the command. Instead use ```\\insertword``` since markdown will only render one backslash, and the conversion will use a plain text backslash.
