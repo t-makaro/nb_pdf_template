@@ -46,9 +46,9 @@ This package offers the following templates:
 
 Template | Use
 ---------|-------
-classic.tplx | For accurate recreation of the default Jupyter Notebook Style
-classicm.tplx | m for modified. Similar to classic.tplx but in/out prompt are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider
-jupyter.tplx | Depreciated simply redirects to classic.tplx will be removed in the future
+classic.tplx | For accurate recreation of the default Jupyter Notebook Style.
+classicm.tplx | m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
+jupyter.tplx | Depreciated. Simply redirects to classic.tplx and will be removed in the future
 style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Issues (in common with default template)
@@ -59,6 +59,7 @@ style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you
 - [x] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
 - [x] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
 - [ ] Let the ```--no-prompt``` nbconvert flag remove prompts. (Easy, but compatibility issues with older versions of nbconvert maybe?)
+- [ ] Font improvements (Easy)
 - [ ] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
 - [x] Improve syntax highlighting. (Hard)
 - [x] Fix page breaks. (Moderate)
