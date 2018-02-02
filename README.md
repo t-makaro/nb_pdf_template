@@ -77,3 +77,8 @@ style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you
 to a raw cell at the top of the notebook to customize the maketitle.
 
 4. Typing ```\insertword``` in a markdown cell in Jupyter Notebook can cause conversion to fail since LaTeX will attempt to compile the command. Instead use ```\\insertword``` since markdown will only render one backslash, and the conversion will use a plain text backslash.
+5. If using Pandas (as pd), try:
+```
+pd.set_option('display.latex.repr', True)
+```
+at the start of your notebook. This should add nice formating of pandas dataframes in the conversion.
