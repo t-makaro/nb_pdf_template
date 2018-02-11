@@ -30,26 +30,26 @@ python -m nb_pdf_template.install
 ## Use
 From the command line:
 ```
-jupyter nbconvert --to pdf filename.ipynb --template classic.tplx
+jupyter nbconvert --to pdf filename.ipynb --template classicm
 ```
 
 Adding:
 ```
-c.LatexExporter.template_file = 'classic.tplx'
+c.LatexExporter.template_file = 'classicm'
 ```
-to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classic.tplx", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
+to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classicm", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
 
-Replace ```classic.tplx``` with your template of choice.
+Replace ```classicm``` with your template of choice.
 
 ### Templates
 This package offers the following templates:
 
 Template | Use
 ---------|-------
-classic.tplx | For accurate recreation of the default Jupyter Notebook Style.
-classicm.tplx | m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
-jupyter.tplx | Depreciated. Simply redirects to classic.tplx and will be removed in the future
-style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
+classic | For most accurate recreation of the default Jupyter Notebook Style.
+classicm **(Recommended)**| m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
+jupyter | Depreciated. Simply redirects to classic.tplx and will be removed in the future
+style_jupyter | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Issues (in common with default template)
 1. raw pyout text, and code cells will not wrap text (at 87 characters the text will spill into the margin)
