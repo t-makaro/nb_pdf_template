@@ -46,20 +46,19 @@ This package offers the following templates:
 
 Template | Use
 ---------|-------
-classic | For most accurate recreation of the default Jupyter Notebook Style.
-classicm **(Recommended)**| m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
-jupyter | Depreciated. Simply redirects to classic.tplx and will be removed in the future
-style_jupyter | DO NOT use this directly. Inherit from this template if you want to build your own.
+classic.tplx | For most accurate recreation of the default Jupyter Notebook Style.
+classicm.tplx **(Recommended)**| m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
+jupyter.tplx | Depreciated. Simply redirects to classic.tplx and will be removed in the future
+style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Issues (in common with default template)
 1. raw pyout text, and code cells will not wrap text (at 87 characters the text will spill into the margin)
 
 ## Todo
-- [ ] Create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) (Easy)
+- [ ] Create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) Font, color changes. (Easy)
 - [x] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
 - [x] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
 - [ ] Let the ```--no-prompt``` nbconvert flag remove prompts. (Easy, but compatibility issues with older versions of nbconvert maybe?)
-- [ ] Font improvements (Easy)
 - [ ] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
 - [x] Improve syntax highlighting. (Hard)
 - [x] Fix page breaks. (Moderate)
