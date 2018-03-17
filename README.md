@@ -14,6 +14,10 @@ This template is ready for anyone to use.
 7. Markdown paragraphs are no longer auto-indented in the pdf
 8. Syntax highlighting improvements. (Bonus if using XeLaTeX)
 
+Quick Comparison:
+![comparison](example/comparison.png)
+for a closer look see the example directory.
+
 ## Installation
 
 ### Manually:
