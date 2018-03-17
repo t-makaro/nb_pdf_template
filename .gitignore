@@ -88,6 +88,9 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# aux exmaple files
+# aux example files
 *.tex
 *.png
+*.out
+*.aux
+*.synctex.gz
