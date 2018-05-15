@@ -61,7 +61,7 @@ style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you
 - [x] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
 - [x] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
 - [ ] Let the ```--no-prompt``` nbconvert flag remove prompts. (Easy, but compatibility issues with older versions of nbconvert maybe?)
-- [ ] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
+- [x] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
 - [x] Improve syntax highlighting. (Hard)
 - [x] Fix page breaks. (Moderate)
 
