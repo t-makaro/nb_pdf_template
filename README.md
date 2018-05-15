@@ -13,6 +13,7 @@ This template is ready for anyone to use.
 6. In/Out text colours updated to match Jupyter
 7. Markdown paragraphs are no longer auto-indented in the pdf
 8. Syntax highlighting improvements. (Bonus if using XeLaTeX)
+9. Raw pyout text wrapping improvements.
 
 Quick Comparison:
 ![comparison](example/comparison.png)
@@ -54,9 +55,6 @@ classic.tplx | For most accurate recreation of the default Jupyter Notebook Styl
 classicm.tplx **(Recommended)**| m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
 jupyter.tplx | Deprecated. Simply redirects to classic.tplx and will be removed in the future
 style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
-
-## Issues (in common with default template)
-1. raw pyout text, and code cells will not wrap text (at 87 characters the text will spill into the margin)
 
 ## Todo
 - [ ] Create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) Font, color changes. (Easy)
