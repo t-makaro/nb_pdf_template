@@ -104,10 +104,14 @@
 % Output
 %===============================================================================
 
+((*- if charlim is not defined -*))
+	((* set charlim = 86 *))
+((*- endif -*))
+
 ((* block execute_result scoped *))
     ((*- for type in output.data | filter_data_type -*))
         ((*- if type in ['text/plain']*))
-            ((( draw_cell(output.data['text/plain'] | escape_latex, cell, 'Out', 'outcolor') )))
+            ((( draw_cell(output.data['text/plain'] | wrap_text(charlim) | escape_latex, cell, 'Out', 'outcolor') )))
         ((* else -*))
             ((( " " )))
             ((( draw_prompt(cell, 'Out', 'outcolor') )))((( super() )))

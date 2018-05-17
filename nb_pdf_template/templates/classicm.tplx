@@ -7,3 +7,5 @@
 ((* block style_settings *))
         \leftmarginsfalse
 ((* endblock style_settings *))
+
+((* set charlim = 94 *))
