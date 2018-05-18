@@ -57,29 +57,7 @@ jupyter.tplx | Deprecated. Simply redirects to classic.tplx and will be removed 
 style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Todo
-- [ ] Create a "lab.tplx" to distinguish between slight differences in the styles of the Classic notebook and Jupyter lab. (Once Jupyter lab hits release) Font, color changes. (Easy)
-- [x] Add an optional to the "style_*.tplx" templates to allow them to be inherited from any template without worrying about spacing. (Easy)
-- [x] Create a dual of the template that has the in/put prompts above cells instead of on the left and increase margins in that template. (Easy)
-- [ ] Let the ```--no-prompt``` nbconvert flag remove prompts. (Easy, but compatibility issues with older versions of nbconvert maybe?)
-- [x] Find a solution to text wrapping in verbatim environments with commandchars. (Very Hard)
-- [x] Improve syntax highlighting. (Hard)
-- [x] Fix page breaks. (Moderate)
+[Moved to the wiki](https://github.com/t-makaro/nb_pdf_template/wiki/Todo-List)
 
 ## Tips (Good for any template)
-1. Want to remove page numbers? Add ```\pagenumbering{gobble}``` to a raw cell at the top of the notebook.
-2. Want to set page numbers to start at a specific number? Add ```\setcounter{page}{number_here}``` to a raw cell at the top of the notebook.
-3. Want to re-add the maketitle? Add:
-```
-\author{name}
-\title{title}
-\date{date}
-\maketitle
-```
-to a raw cell at the top of the notebook to customize the maketitle.
-
-4. Typing ```\insertword``` in a markdown cell in Jupyter Notebook can cause conversion to fail since LaTeX will attempt to compile the command. Instead use ```\\insertword``` since markdown will only render one backslash, and the conversion will use a plain text backslash.
-5. If using Pandas (as pd), try:
-```
-pd.set_option('display.latex.repr', True)
-```
-at the start of your notebook. This should add nice formating of pandas dataframes in the conversion.
+[Moved to the wiki](https://github.com/t-makaro/nb_pdf_template/wiki/Tips)
