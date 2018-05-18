@@ -2,21 +2,32 @@ import os
 import shutil
 import nbconvert
 
-templates = {"jupyter.tplx", "style_jupyter.tplx", "classic.tplx",
+
+TEMPLATES = {"jupyter.tplx", "style_jupyter.tplx", "classic.tplx",
              "classicm.tplx"}
-nbconvert_path = os.path.dirname(nbconvert.__file__)
-to_path = os.path.abspath(os.path.join(nbconvert_path, "templates", "latex"))
-if not os.path.isdir(to_path):
-    raise OSError("Directory: %s not found." % to_path)
 
-path = os.path.dirname(os.path.realpath(__file__))
-from_path = os.path.abspath(os.path.join(path, "templates"))
-found_templates = os.listdir(from_path)
-if templates != set(found_templates):
-    raise ValueError("Templates not found")
 
-for template in templates:
-    src = os.path.join(from_path, template)
-    shutil.copy(src, to_path)
+def install():
+    """Copies the templates into the necessary location to be
+    globally accessible to nbconvert.
+    """
+    nbconvert_path = os.path.dirname(nbconvert.__file__)
+    dst = os.path.abspath(os.path.join(nbconvert_path, "templates", "latex"))
+    if not os.path.isdir(dst):
+        raise OSError("Directory: %s not found." % dst)
 
-print("Success")
+    module_path = os.path.dirname(os.path.realpath(__file__))
+    template_path = os.path.abspath(os.path.join(module_path, "templates"))
+    found_templates = os.listdir(template_path)
+    if TEMPLATES != set(found_templates):
+        raise ValueError("Templates not found")
+
+    for template in TEMPLATES:
+        src = os.path.join(template_path, template)
+        shutil.copy(src, dst)
+
+    print("Success")
+
+
+if __name__ == "__main__":
+    install()
