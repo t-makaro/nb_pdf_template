@@ -151,5 +151,9 @@
     ((*- if cell.execution_count is defined -*))
     ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
     ((*- else -*))((*- set execution_count = " " -*))((*- endif *))
+	
+	((*- if (resources.global_content_filter.include_output_prompt and prompt == 'Out')
+		 or (resources.global_content_filter.include_input_prompt  and prompt == 'In' ) *))
 \prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}
+	((*- endif -*))
 ((*- endmacro *))
