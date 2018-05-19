@@ -71,6 +71,17 @@
         \leftmarginsfalse
     ((* endblock style_settings *))
     
+	% prompt
+	((*- block style_prompt *))
+    \newcommand{\prompt}[3]{
+        \needspace{1.1cm}
+        \settowidth{\promptlength}{ #1 [#3] }
+        \ifleftmargins\hspace{-\promptlength}\hspace{-5pt}\fi
+        {\color{#2}#1 [#3]:}
+        \ifleftmargins\vspace{-2.7ex}\fi
+    }
+	((* endblock style_prompt *))
+	
     % environments
 	((*- block style_environments *))
     \newenvironment{InVerbatim}{\VerbatimEnvironment%
@@ -139,12 +150,6 @@
 ((* macro draw_prompt(cell, prompt, prompt_color) -*))
     ((*- if cell.execution_count is defined -*))
     ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
-    ((*- else -*))
-    ((*- set execution_count = " " -*))
-    ((*- endif -*))
-\needspace{1.1cm}
-\settowidth{\promptlength}{ ((( prompt ~ ' [' ~ execution_count ~ ']' ))) }
-\ifleftmargins\hspace{-\promptlength}\hspace{-5pt}\fi
-((('{\color{' ~ prompt_color ~ '}' ~ prompt ~ ' [{\\color{' ~ prompt_color ~ '}' ~ execution_count ~ '}]:}' )))
-\ifleftmargins\vspace{-2.7ex}\fi
+    ((*- else -*))((*- set execution_count = " " -*))((*- endif *))
+\prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}
 ((*- endmacro *))
