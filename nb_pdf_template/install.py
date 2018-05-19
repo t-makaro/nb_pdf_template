@@ -3,8 +3,7 @@ import shutil
 import nbconvert
 
 
-TEMPLATES = {"jupyter.tplx", "style_jupyter.tplx", "classic.tplx",
-             "classicm.tplx"}
+TEMPLATES = {"style_jupyter.tplx", "classic.tplx", "classicm.tplx"}
 
 
 def install():
