@@ -1,8 +1,8 @@
 ((*- extends 'classic.tplx' -*))
 
-((* block margins *))
+((*- block margins -*))
     \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=.5in,rmargin=.5in}
-((* endblock margins *))
+((*- endblock margins -*))
 
 ((* block style_settings *))
         \leftmarginsfalse

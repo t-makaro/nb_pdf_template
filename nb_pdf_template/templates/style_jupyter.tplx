@@ -1,95 +1,96 @@
 ((= IPython input/output style =))
-
 ((*- extends 'base.tplx' -*))
 
-% Custom definitions
-
-((* block packages *))
-    %\usepackage{fancybox}
+((*- block packages -*))
     \usepackage[breakable]{tcolorbox}
     \tcbset{nobeforeafter}
     \usepackage{needspace}
     ((( super() )))
-((* endblock packages*))
+((*- endblock packages -*))
 
-((* block definitions *))
-    ((( super() )))
-    % Pygments definitions
-    ((( resources.latex.pygments_definitions )))
+((*- block definitions -*))
+	((( super() )))
+% Pygments definitions
+	(((- resources.latex.pygments_definitions -)))
 
-    ((* block repygments *))
-%Reconfigured pygments
-\makeatletter
-\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
-\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
-\expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}} %imports
-\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %in
-\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{\codetrue##1\codefalse}}} %operators
-\makeatother
+	((* block repygments *))
+	%Reconfigured pygments
+	\makeatletter
+	\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
+	\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
+	\expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}} %imports
+	\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %in
+	\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{\codetrue##1\codefalse}}} %operators
+	\makeatother
 
-\newif\ifcode
-\codefalse
-\definecolor{purp}{HTML}{AA22FF}
-%If using XeLaTeX, use magic to highlight operators in purple.
-\ifdefined\XeTeXcharclass
-\XeTeXinterchartokenstate = 1
-\newXeTeXintercharclass \mycharclassPurple
-\XeTeXcharclass `\* \mycharclassPurple
-\XeTeXcharclass `\/ \mycharclassPurple
-\XeTeXcharclass `\+ \mycharclassPurple
-\XeTeXcharclass `\- \mycharclassPurple
-\XeTeXcharclass `\@ \mycharclassPurple
-\XeTeXcharclass `\% \mycharclassPurple
-\XeTeXcharclass `\& \mycharclassPurple
-\XeTeXcharclass `\| \mycharclassPurple
-\XeTeXcharclass `\! \mycharclassPurple
-\XeTeXcharclass `\< \mycharclassPurple
-\XeTeXcharclass `\> \mycharclassPurple
-\XeTeXcharclass `\~ \mycharclassPurple
-\XeTeXcharclass `\^ \mycharclassPurple
-\XeTeXcharclass `\? \mycharclassPurple
+	\newif\ifcode
+	\codefalse
+	\definecolor{purp}{HTML}{AA22FF}
+	%If using XeLaTeX, use magic to highlight operators in purple.
+	\ifdefined\XeTeXcharclass
+	\XeTeXinterchartokenstate = 1
+	\newXeTeXintercharclass \mycharclassPurple
+	\XeTeXcharclass `\* \mycharclassPurple
+	\XeTeXcharclass `\/ \mycharclassPurple
+	\XeTeXcharclass `\+ \mycharclassPurple
+	\XeTeXcharclass `\- \mycharclassPurple
+	\XeTeXcharclass `\@ \mycharclassPurple
+	\XeTeXcharclass `\% \mycharclassPurple
+	\XeTeXcharclass `\& \mycharclassPurple
+	\XeTeXcharclass `\| \mycharclassPurple
+	\XeTeXcharclass `\! \mycharclassPurple
+	\XeTeXcharclass `\< \mycharclassPurple
+	\XeTeXcharclass `\> \mycharclassPurple
+	\XeTeXcharclass `\~ \mycharclassPurple
+	\XeTeXcharclass `\^ \mycharclassPurple
+	\XeTeXcharclass `\? \mycharclassPurple
 
-\XeTeXinterchartoks 0 \mycharclassPurple   = {\bgroup\ifcode\color{purp}\else\fi}
-\XeTeXinterchartoks 4095 \mycharclassPurple = {\bgroup\ifcode\color{purp}\else\fi}
+	\XeTeXinterchartoks 0 \mycharclassPurple   = {\bgroup\ifcode\color{purp}\else\fi}
+	\XeTeXinterchartoks 4095 \mycharclassPurple = {\bgroup\ifcode\color{purp}\else\fi}
 
-\XeTeXinterchartoks \mycharclassPurple 0   = {\egroup}
-\XeTeXinterchartoks \mycharclassPurple 4095 = {\egroup}
-\fi %end magical operator highlighting
-%End Reconfigured Pygments
-((* endblock repygments *))
+	\XeTeXinterchartoks \mycharclassPurple 0   = {\egroup}
+	\XeTeXinterchartoks \mycharclassPurple 4095 = {\egroup}
+	\fi %end magical operator highlighting
+	%End Reconfigured Pygments
+	((* endblock repygments *))
    
     % Exact colors from NB
+	((*- block style_colors *))
     \definecolor{incolor}{HTML}{303F9F}
     \definecolor{outcolor}{HTML}{D84315}
-    \definecolor{grey}{HTML}{CFCFCF}
-    \definecolor{light-grey}{HTML}{F7F7F7}
-    
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+	((*- endblock style_colors *))
+
     % needed definitions
     \newif\ifleftmargins
     \newlength{\promptlength}
+
     % cell style settings
-    ((* block style_settings *))
+    ((*- block style_settings -*))
         \leftmarginsfalse
     ((* endblock style_settings *))
     
     % environments
+	((*- block style_environments *))
     \newenvironment{InVerbatim}{\VerbatimEnvironment%
 		\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,
-			colback=light-grey,colframe=grey]
+			colback=cellbackground, colframe=cellborder]
 			\begin{Verbatim}
-			}{%
-			\end{Verbatim}%
-		\end{tcolorbox}%
+			}{
+			\end{Verbatim}
+		\end{tcolorbox}
 	}
 	\newenvironment{OutVerbatim}{\VerbatimEnvironment%
-		\begin{tcolorbox}[breakable,boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0]
+		\begin{tcolorbox}[breakable, boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0]
 			\begin{Verbatim}
-			}{%
-			\end{Verbatim}%
-		\end{tcolorbox}%
+			}{
+			\end{Verbatim}
+		\end{tcolorbox}
 	}
+	((* endblock style_environments *))
     
-((* endblock definitions *))
+((*- endblock definitions -*))
 
 %===============================================================================
 % Input
