@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='nb_pdf_template',
-      version='1.2.0',
+      version='1.3.0',
       description='LaTeX templates for jupyter notebook conversion to pdf',
       url='https://github.com/t-makaro/nb_pdf_template',
       author='Tyler Makaro',
