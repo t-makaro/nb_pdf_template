@@ -26,7 +26,7 @@ drop all of the "*.tplx" files into the folder containing the other LaTeX nbconv
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
 
 ### Automatically:
-Warning this has only been tested on windows. It has been reported to work on MacOS as well.
+This has been thoroughly tested on windows, and it has been reported to work on MacOS as well.
 ```
 pip install nb_pdf_template
 python -m nb_pdf_template.install
