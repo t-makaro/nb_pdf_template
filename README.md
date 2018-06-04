@@ -2,8 +2,6 @@
 A more accurate representation of jupyter notebooks when converting to pdfs.
 This template was designed to make converted jupyter notebooks look (almost) identical to the actual notebook. If something doesn't exist in the original notebook then it doesn't belong in the conversion.
 
-This template is ready for anyone to use.
-
 ## Improvements
 1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook)
 2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't)
