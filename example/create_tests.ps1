@@ -5,8 +5,8 @@ $templates = @("classic","classicm")
 $notebook = "test"
 
 foreach ($template in $templates){
-	jupyter nbconvert --to pdf ($notebook+".ipynb") --template $template
+	jupyter nbconvert --to pdf "$notebook.ipynb" --template $template
 	if ($template -eq "article") {$template = "default"}
-	$NewName = $notebook+"_"+$template+"_template.pdf"
-	Move-Item -path ($notebook+".pdf") -destination $NewName -force
+	$NewName = "${notebook}_${template}_template.pdf"
+	Move-Item -path "$notebook.pdf" -destination $NewName -force
 }
