@@ -19,37 +19,24 @@
     \expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
     \expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
     \expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}} %imports
-    \expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %in
-    \expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{\codetrue##1\codefalse}}} %operators
+    \expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %operator.word
+    \expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[HTML]{AA22FF}{\codetrue##1\codefalse}}} %operator
     \makeatother
 
     \newif\ifcode
     \codefalse
-    \definecolor{purp}{HTML}{AA22FF}
-    %If using XeLaTeX, use magic to highlight operators in purple.
+    \definecolor{Grey}{rgb}{0.40,0.40,0.40}
+    %If using XeLaTeX, use magic to not highlight . operators with purple.
     \ifdefined\XeTeXcharclass
     \XeTeXinterchartokenstate = 1
-    \newXeTeXintercharclass \mycharclassPurple
-    \XeTeXcharclass `\* \mycharclassPurple
-    \XeTeXcharclass `\/ \mycharclassPurple
-    \XeTeXcharclass `\+ \mycharclassPurple
-    \XeTeXcharclass `\- \mycharclassPurple
-    \XeTeXcharclass `\@ \mycharclassPurple
-    \XeTeXcharclass `\% \mycharclassPurple
-    \XeTeXcharclass `\& \mycharclassPurple
-    \XeTeXcharclass `\| \mycharclassPurple
-    \XeTeXcharclass `\! \mycharclassPurple
-    \XeTeXcharclass `\< \mycharclassPurple
-    \XeTeXcharclass `\> \mycharclassPurple
-    \XeTeXcharclass `\~ \mycharclassPurple
-    \XeTeXcharclass `\^ \mycharclassPurple
-    \XeTeXcharclass `\? \mycharclassPurple
+    \newXeTeXintercharclass \mycharclassGrey
+    \XeTeXcharclass `. \mycharclassGrey
+    \XeTeXinterchartoks 0 \mycharclassGrey   = {\bgroup\ifcode\color{Grey}\else\fi}
 
-    \XeTeXinterchartoks 0 \mycharclassPurple   = {\bgroup\ifcode\color{purp}\else\fi}
-    \XeTeXinterchartoks 4095 \mycharclassPurple = {\bgroup\ifcode\color{purp}\else\fi}
+    \XeTeXinterchartoks 4095 \mycharclassGrey = {\bgroup\ifcode\color{Grey}\else\fi}
 
-    \XeTeXinterchartoks \mycharclassPurple 0   = {\egroup}
-    \XeTeXinterchartoks \mycharclassPurple 4095 = {\egroup}
+    \XeTeXinterchartoks \mycharclassGrey 0   = {\egroup}
+    \XeTeXinterchartoks \mycharclassGrey 4095 = {\egroup}
     \fi %end magical operator highlighting
     %End Reconfigured Pygments
     ((* endblock repygments *))
