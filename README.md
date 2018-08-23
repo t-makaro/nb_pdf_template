@@ -7,11 +7,12 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't)
 3. **BOXES!** are drawn around code cells.
 4. In/Out will move to the left as the execution count increases instead of pushing code to the right.
-5. $\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail
-6. In/Out text colours updated to match Jupyter
-7. Markdown paragraphs are no longer auto-indented in the pdf
-8. Syntax highlighting improvements. (Bonus if using XeLaTeX)
-9. Raw pyout text wrapping improvements.
+5. ~~$\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail~~ **(This change was merged into nbconvert and is set for 5.4.0 release)**
+6. "\LaTeX" and "\TeX" are no longer converted into a logo on conversion to pdf unless they are in math mode. (This and the above point replicate the functionality of these commands in notebook markdown)
+7. In/Out text colours updated to match Jupyter
+8. Markdown paragraphs are no longer auto-indented in the pdf
+9. Syntax highlighting improvements. (Bonus if using XeLaTeX)
+10. Raw pyout text wrapping improvements.
 
 Quick Comparison:
 ![comparison](example/comparison.png)
