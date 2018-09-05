@@ -89,6 +89,8 @@ ENV/
 .ropeproject
 
 # aux example files
+example/test.pdf
+example/_minted-test
 *.tex
 *.png
 *.out

@@ -12,6 +12,7 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 7. Markdown paragraphs are no longer auto-indented in the pdf
 8. Syntax highlighting improvements. (Bonus if using XeLaTeX)
 9. Raw pyout text wrapping improvements.
+10. Text wrapping of code cells (requires extra setup)
 
 Quick Comparison:
 ![comparison](example/comparison.png)
@@ -28,6 +29,16 @@ This has been thoroughly tested on windows, and it has been reported to work on 
 ```
 pip install nb_pdf_template
 python -m nb_pdf_template.install
+```
+
+### Optional Extra Setup
+In order to make code cell wrap text, we need to change how nbconvert does syntax highlighting. Add the following to your ```jupyter_nbconvert_config.py``` and your ```jupyter_notebook_config.py```:
+```
+c.PDFExporter.latex_command = ['xelatex', '-8bit', '-shell-escape','{filename}']
+```
+then run:
+```
+python -m nb_pdf_template.install --minted
 ```
 
 ## Use

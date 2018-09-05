@@ -20,4 +20,6 @@ setup(name='nb_pdf_template',
           'Topic :: Text Processing :: Markup :: LaTeX',
           'Programming Language :: Python',
       ],
+      entry_points={'pygments.styles': [
+            'jupyter_python = nb_pdf_template:Jupyter_PythonStyle']},
       zip_safe=False)

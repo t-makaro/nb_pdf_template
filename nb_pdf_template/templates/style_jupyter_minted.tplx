@@ -1,0 +1,147 @@
+((= IPython input/output style =))
+((*- extends 'base.tplx' -*))
+
+((*- block packages -*))
+    \usepackage[breakable]{tcolorbox}
+    \tcbset{nobeforeafter}
+    \usepackage{needspace}
+    \usepackage{minted}
+    \usemintedstyle{jupyter_python}
+    ((( super() )))
+((*- endblock packages -*))
+
+((*- block definitions -*))
+    ((( super() )))
+% Pygments definitions
+    ((* block repygments *))
+    \newif\ifcode
+    \codefalse
+    \definecolor{Grey}{rgb}{0.40,0.40,0.40}
+    %If using XeLaTeX, use magic to not highlight . operators with purple.
+    \ifdefined\XeTeXcharclass
+    \XeTeXinterchartokenstate = 1
+    \newXeTeXintercharclass \mycharclassGrey
+    \XeTeXcharclass `. \mycharclassGrey
+    \XeTeXinterchartoks 0 \mycharclassGrey   = {\bgroup\ifcode\color{Grey}\else\fi}
+
+    \XeTeXinterchartoks 4095 \mycharclassGrey = {\bgroup\ifcode\color{Grey}\else\fi}
+
+    \XeTeXinterchartoks \mycharclassGrey 0   = {\egroup}
+    \XeTeXinterchartoks \mycharclassGrey 4095 = {\egroup}
+    \fi %end magical operator highlighting
+    %End Reconfigured Pygments
+    ((* endblock repygments *))
+   
+    % Exact colors from NB
+    ((*- block style_colors *))
+    \definecolor{incolor}{HTML}{303F9F}
+    \definecolor{outcolor}{HTML}{D84315}
+    \definecolor{cellborder}{HTML}{CFCFCF}
+    \definecolor{cellbackground}{HTML}{F7F7F7}
+    ((*- endblock style_colors *))
+
+    % needed definitions
+    \newif\ifleftmargins
+    \newlength{\promptlength}
+
+    % cell style settings
+    ((*- block style_settings -*))
+        \leftmarginsfalse
+    ((* endblock style_settings *))
+    
+    % prompt
+    ((*- block style_prompt *))
+    \newcommand{\prompt}[3]{
+        \needspace{1.1cm}
+        \settowidth{\promptlength}{ #1 [#3] }
+        \ifleftmargins\hspace{-\promptlength}\hspace{-5pt}\fi
+        {\color{#2}#1 [#3]:}
+        \ifleftmargins\vspace{-2.7ex}\fi
+    }
+    ((* endblock style_prompt *))
+    
+    % environments
+    ((*- block style_environments *))
+    \newenvironment{OutVerbatim}{\VerbatimEnvironment%
+        \begin{tcolorbox}[breakable, boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0]
+            \begin{Verbatim}
+            }{
+            \end{Verbatim}
+        \end{tcolorbox}
+    }
+    ((* endblock style_environments *))
+    
+((*- endblock definitions -*))
+
+%===============================================================================
+% Input
+%===============================================================================
+
+((* block input scoped *))
+    ((( draw_cell_in(cell.source, cell, 'In', 'incolor') )))
+((* endblock input *))
+
+
+%===============================================================================
+% Output
+%===============================================================================
+
+((*- if charlim is not defined -*))
+    ((* set charlim = 86 *))
+((*- endif -*))
+
+((* block execute_result scoped *))
+    ((*- for type in output.data | filter_data_type -*))
+        ((*- if type in ['text/plain']*))
+            ((( draw_cell(output.data['text/plain'] | wrap_text(charlim) | escape_latex, cell, 'Out', 'outcolor') )))
+        ((* else -*))
+            ((( " " )))
+            ((( draw_prompt(cell, 'Out', 'outcolor') )))((( super() )))
+        ((*- endif -*))
+    ((*- endfor -*))
+((* endblock execute_result *))
+
+
+%==============================================================================
+% Support Macros
+%==============================================================================
+
+% Name: draw_cell
+% Purpose: Renders an output/input prompt
+((* macro draw_cell(text, cell, prompt, prompt_color) -*))
+((( draw_prompt(cell, prompt, prompt_color) )))
+\begin{((( prompt ~ 'Verbatim')))}[commandchars=\\\{\}]
+((( text )))
+\end{((( prompt ~ 'Verbatim')))}
+((*- endmacro *))
+
+((*- set nb_language = nb.metadata.kernelspec.get('language', 'python') -*))
+((*- if nb_language == 'python' -*))
+    ((*- set nb_language = nb.metadata.language_info.get('pygments_lexer', 'ipython3') -*))
+((*- endif -*))
+
+% Name: draw_cell_in
+% Purpose: Renders an output/input prompt
+((* macro draw_cell_in(text, cell, prompt, prompt_color) -*))
+((( draw_prompt(cell, prompt, prompt_color) )))
+\codetrue
+\begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm, colback=cellbackground, colframe=cellborder]
+\begin{minted}[breaklines=True]{((( nb_language )))}
+((( text )))
+\end{minted}
+\end{tcolorbox}
+\codefalse
+((*- endmacro *))
+
+% Name: draw_prompt
+% Purpose: Renders an output/input prompt
+((* macro draw_prompt(cell, prompt, prompt_color) -*))
+    ((*- if cell.execution_count is defined -*))
+    ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
+    ((*- else -*))((*- set execution_count = " " -*))((*- endif *))
+    
+    ((*- if (resources.global_content_filter.include_output_prompt and prompt == 'Out')
+         or (resources.global_content_filter.include_input_prompt  and prompt == 'In' ) *))
+\prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}
+    ((*- endif -*))
+((*- endmacro *))
