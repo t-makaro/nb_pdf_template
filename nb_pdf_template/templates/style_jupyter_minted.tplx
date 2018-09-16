@@ -14,6 +14,13 @@
     ((( super() )))
 % Pygments definitions
     ((* block repygments *))
+    \makeatletter
+    \newcommand*\@iflatexlater{\@ifl@t@r\fmtversion}
+    \@iflatexlater{2016/03/01}{
+	    \newcommand{\wordboundary}{4095}}{
+	    \newcommand{\wordboundary}{255}}
+    \makeatother
+
     \newif\ifcode
     \codefalse
     \definecolor{Grey}{rgb}{0.40,0.40,0.40}
@@ -24,10 +31,10 @@
     \XeTeXcharclass `. \mycharclassGrey
     \XeTeXinterchartoks 0 \mycharclassGrey   = {\bgroup\ifcode\color{Grey}\else\fi}
 
-    \XeTeXinterchartoks 4095 \mycharclassGrey = {\bgroup\ifcode\color{Grey}\else\fi}
+    \XeTeXinterchartoks \wordboundary \mycharclassGrey = {\bgroup\ifcode\color{Grey}\else\fi}
 
     \XeTeXinterchartoks \mycharclassGrey 0   = {\egroup}
-    \XeTeXinterchartoks \mycharclassGrey 4095 = {\egroup}
+    \XeTeXinterchartoks \mycharclassGrey \wordboundary = {\egroup}
     \fi %end magical operator highlighting
     %End Reconfigured Pygments
     ((* endblock repygments *))
