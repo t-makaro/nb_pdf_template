@@ -12,7 +12,7 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 7. In/Out text colours updated to match Jupyter
 8. Markdown paragraphs are no longer auto-indented in the pdf
 9. Syntax highlighting improvements. (Bonus if using XeLaTeX)
-10. Raw pyout text wrapping improvements.
+10. Output text wrapping improvements.
 11. Code cell text wrapping (requires extra setup)
 
 Quick Comparison:
