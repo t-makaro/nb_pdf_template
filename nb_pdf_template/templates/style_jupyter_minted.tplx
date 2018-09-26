@@ -48,25 +48,19 @@
     ((*- endblock style_colors *))
 
     % needed definitions
-    \newif\ifleftmargins
     \newlength{\promptlength}
 
-    % cell style settings
-    ((*- block style_settings -*))
-        \leftmarginsfalse
-    ((* endblock style_settings *))
-    
     % prompt
     ((*- block style_prompt *))
     \newcommand{\prompt}[3]{
         \needspace{1.1cm}
         \settowidth{\promptlength}{ #1 [#3] }
-        \ifleftmargins\hspace{-\promptlength}\hspace{-5pt}\fi
-        {\color{#2}#1 [#3]:}
-        \ifleftmargins\vspace{-2.7ex}\fi
+        \hspace{-\promptlength}\hspace{-5pt}
+        \noindent{\color{#2}#1 [#3]:}
+        \vspace{-3.05ex}
     }
     ((* endblock style_prompt *))
-    
+
     % environments
     ((*- block style_environments *))
     \newenvironment{OutVerbatim}{\VerbatimEnvironment%
