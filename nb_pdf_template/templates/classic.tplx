@@ -38,8 +38,4 @@
     \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=1.1in,rmargin=.5in}
 ((*- endblock margins -*))
 
-((* block style_settings *))
-        \leftmarginstrue
-((* endblock style_settings *))
-
 ((* block maketitle *))((* endblock maketitle *))
