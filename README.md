@@ -33,7 +33,7 @@ python -m nb_pdf_template.install
 ```
 
 ### Optional Extra Setup
-In order to make code cells wrap text, we need to change how nbconvert does syntax highlighting. This feature is experimental. 
+In order to make code cells wrap text, we need to change how nbconvert does syntax highlighting. This feature is experimental. (And known not to work with TeX Live 2015).
 
 Add the following to your ```jupyter_nbconvert_config.py``` and your ```jupyter_notebook_config.py```:
 ```
