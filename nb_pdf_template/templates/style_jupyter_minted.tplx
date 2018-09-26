@@ -57,7 +57,7 @@
         \settowidth{\promptlength}{ #1 [#3] }
         \hspace{-\promptlength}\hspace{-5pt}
         \noindent{\color{#2}#1 [#3]:}
-        \vspace{-2.7ex}
+        \vspace{-3.05ex}
     }
     ((* endblock style_prompt *))
 
