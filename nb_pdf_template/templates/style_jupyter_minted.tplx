@@ -109,6 +109,12 @@
 ((* endblock execute_result *))
 
 
+((* block stream *))
+    \begin{Verbatim}[commandchars=\\\{\}]
+((( output.text | wrap_text(charlim) | escape_latex | ansi2latex )))
+    \end{Verbatim}
+((* endblock stream *))
+
 %==============================================================================
 % Support Macros
 %==============================================================================
