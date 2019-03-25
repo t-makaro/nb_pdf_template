@@ -3,17 +3,17 @@ A more accurate representation of jupyter notebooks when converting to pdfs.
 This template was designed to make converted jupyter notebooks look (almost) identical to the actual notebook. If something doesn't exist in the original notebook then it doesn't belong in the conversion.
 
 ## Improvements
-1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook)
-2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't)
+1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook).
+2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't).
 3. **BOXES!** are drawn around code cells.
-4. In/Out will move to the left as the execution count increases instead of pushing code to the right.
-5. ~~$\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail~~ **(This change was merged into nbconvert 5.4.0)**
-6. "\LaTeX" and "\TeX" are no longer converted into a logo on conversion to pdf unless they are in math mode. (This and the above point replicate the functionality of these commands in notebook markdown)
-7. In/Out text colours updated to match Jupyter
-8. Markdown paragraphs are no longer auto-indented in the pdf
+4. In/Out counts will move to the left as the execution count increases instead of pushing code to the right (only numbers are displayed by default to save page width).
+5. ~~$\LaTeX$ and $\Tex$ in markdown cells will no longer cause conversion to fail.~~ **(This change was merged into nbconvert 5.4.0)**
+6. "\LaTeX" and "\TeX" are no longer converted into a logo on conversion to pdf unless they are in math mode. (This and the above point replicate the functionality of these commands in notebook markdown).
+7. In/Out prompt colours updated to match Jupyter.
+8. Markdown paragraphs are no longer auto-indented in the pdf.
 9. Syntax highlighting improvements. (Bonus if using XeLaTeX)
 10. Output text wrapping improvements.
-11. Code cell text wrapping (no longer requires extra setup)
+11. Code cell text wrapping.
 
 Quick Comparison:
 ![comparison](example/comparison.png)
