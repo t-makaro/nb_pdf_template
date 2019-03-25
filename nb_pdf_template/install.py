@@ -4,12 +4,7 @@ import nbconvert
 import argparse
 
 
-parser = argparse.ArgumentParser(description='none')
-parser.add_argument('--minted', action='store_true')
-args = parser.parse_args()
-
-TEMPLATES = {"style_jupyter.tplx", "style_jupyter_minted.tplx",
-             "classic.tplx", "classicm.tplx"}
+TEMPLATES = {"style_jupyter.tplx", "classic.tplx", "classicm.tplx"}
 
 
 def install():
@@ -32,11 +27,6 @@ def install():
             continue
         src = os.path.join(template_path, template)
         shutil.copy(src, dst)
-
-    if args.minted:
-        src = os.path.join(template_path, 'style_jupyter_minted.tplx')
-        dst_ = os.path.join(dst, 'style_jupyter.tplx')
-        shutil.copy(src, dst_)
 
     print("Success")
 

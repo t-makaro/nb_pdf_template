@@ -13,7 +13,7 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 8. Markdown paragraphs are no longer auto-indented in the pdf
 9. Syntax highlighting improvements. (Bonus if using XeLaTeX)
 10. Output text wrapping improvements.
-11. Code cell text wrapping (requires extra setup)
+11. Code cell text wrapping (no longer requires extra setup)
 
 Quick Comparison:
 ![comparison](example/comparison.png)
@@ -30,18 +30,6 @@ This has been thoroughly tested on windows, and it has been reported to work on 
 ```
 pip install nb_pdf_template
 python -m nb_pdf_template.install
-```
-
-### Optional Extra Setup
-In order to make code cells wrap text, we need to change how nbconvert does syntax highlighting. This feature is experimental. (And known not to work with TeX Live 2015).
-
-Add the following to your ```jupyter_nbconvert_config.py``` and your ```jupyter_notebook_config.py```:
-```
-c.PDFExporter.latex_command = ['xelatex', '-8bit', '-shell-escape','{filename}']
-```
-then run:
-```
-python -m nb_pdf_template.install --minted
 ```
 
 ## Use
@@ -63,8 +51,8 @@ This package offers the following templates:
 
 Template | Use
 ---------|-------
-classic.tplx | For most accurate recreation of the default Jupyter Notebook Style.
-classicm.tplx **(Recommended)**| m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
+classic.tplx **(Recommended)**| For most accurate recreation of the default Jupyter Notebook Style.
+classicm.tplx | **Deprecated.** m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
 style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Tips (Good for any template)
