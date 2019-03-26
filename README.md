@@ -35,12 +35,12 @@ python -m nb_pdf_template.install
 ## Use
 From the command line:
 ```
-jupyter nbconvert --to pdf filename.ipynb --template classicm
+jupyter nbconvert --to pdf filename.ipynb --template classic
 ```
 
 Adding:
 ```
-c.LatexExporter.template_file = 'classicm'
+c.LatexExporter.template_file = 'classic'
 ```
 to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classicm", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
 
