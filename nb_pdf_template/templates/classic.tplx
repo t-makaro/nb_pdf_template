@@ -35,7 +35,7 @@
 ((*- endblock definitions -*))
 
 ((*- block margins -*))
-    \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=.6in,rmargin=.6in}
+    \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=.7in,rmargin=.7in}
 ((*- endblock margins -*))
 
 ((* block maketitle *))((* endblock maketitle *))
