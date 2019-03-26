@@ -44,7 +44,7 @@ c.LatexExporter.template_file = 'classic'
 ```
 to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classicm", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
 
-Replace ```classicm``` with your template of choice.
+Replace ```classic``` with your template of choice.
 
 ### Templates
 This package offers the following templates:
