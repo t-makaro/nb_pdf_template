@@ -157,7 +157,7 @@
 %===============================================================================
 
 ((*- if charlim is not defined -*))
-    ((* set charlim = 88 *))
+    ((* set charlim = 89 *))
 ((*- endif -*))
 
 ((* block execute_result scoped *))
