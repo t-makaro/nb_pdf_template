@@ -21,16 +21,22 @@ for a closer look see the example directory.
 
 ## Installation
 
-### Manually:
-drop all of the "*.tplx" files into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
-> */Anaconda3/Lib/site-packages/nbconvert/templates/latex
-
-### Automatically:
-This has been thoroughly tested on windows, and it has been reported to work on MacOS as well.
 ```
 pip install nb_pdf_template
 python -m nb_pdf_template.install
 ```
+
+### Updating
+```
+pip install -U nb_pdf_template
+python -m nb_pdf_template.install
+```
+
+### Manual Install:
+drop all of the "*.tplx" files into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
+> */Anaconda3/Lib/site-packages/nbconvert/templates/latex
+
+
 
 ## Use
 From the command line:
@@ -42,7 +48,7 @@ Adding:
 ```
 c.LatexExporter.template_file = 'classic'
 ```
-to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classicm", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
+to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classic", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
 
 Replace ```classic``` with your template of choice.
 
