@@ -33,19 +33,19 @@ python -m nb_pdf_template.install
 ```
 
 ### Manual Install:
-drop all of the "*.tplx" files into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
+Drop all of the "*.tplx" files into the folder containing the other LaTeX nbconvert templates. If using anaconda, it should be something like: 
 > */Anaconda3/Lib/site-packages/nbconvert/templates/latex
 
 
 
 ## Use
 From the command line:
-```
+```bash
 jupyter nbconvert --to pdf filename.ipynb --template classic
 ```
 
 Adding:
-```
+```python
 c.LatexExporter.template_file = 'classic'
 ```
 to the ```jupyter_nbconvert_config.py``` file will let you drop the "--template classic", and to the ```jupyter_notebook_config.py``` file will let you use "download as pdf" from within the Jupyter notebook.
@@ -57,7 +57,7 @@ This package offers the following templates:
 
 Template | Use
 ---------|-------
-classic.tplx **(Recommended)**| For most accurate recreation of the default Jupyter Notebook Style.
+classic.tplx **(Recommended)**| For most accurate recreation of the default Jupyter Notebook style.
 classicm.tplx | m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
 style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
