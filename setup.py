@@ -4,7 +4,7 @@ with open('README.md') as f:
     long_description = f.read()
 
 setup(name='nb_pdf_template',
-      version='3.0.0',
+      version='3.0.1',
       description='LaTeX templates for jupyter notebook conversion to pdf',
       long_description=long_description,
       long_description_content_type='text/markdown',
