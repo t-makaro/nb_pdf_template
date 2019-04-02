@@ -4,8 +4,9 @@
 ((*- block packages -*))
     \usepackage[breakable]{tcolorbox}
     \tcbset{nobeforeafter}
-    ((( super() )))
+    \usepackage{float}
     \floatplacement{figure}{H}
+    ((( super() )))
 ((*- endblock packages -*))
 
 ((*- block definitions -*))
