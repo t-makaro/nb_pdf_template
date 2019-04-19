@@ -1,4 +1,4 @@
-((= IPython input/output style =))
+((=- IPython input/output style -=))
 ((*- extends 'base.tplx' -*))
 
 ((*- block packages -*))
@@ -12,7 +12,7 @@
 ((*- block definitions -*))
     ((( super() )))
 % Pygments definitions
-    (((- resources.latex.pygments_definitions -)))
+    (((- resources.latex.pygments_definitions )))
 
     % For linebreaks inside Verbatim environment from package fancyvrb. 
     \makeatletter
@@ -101,8 +101,8 @@
     
     % prompt
     ((*- block style_prompt *))
-    \newcommand{\prompt}[3]{
-        \llap{{\color{#2}[#3]: \ }}\vspace{-1.25em}
+    \newcommand{\prompt}[4]{
+        \llap{{\color{#2}[#3]: #4}}\vspace{-1.25em}
     }
     ((* endblock style_prompt *))
     
@@ -113,7 +113,7 @@
 %===============================================================================
 
 ((* block input scoped *))
-    ((( draw_cell(cell.source | highlight_code(strip_verbatim=True), cell, 'In', 'incolor') )))
+    ((( draw_cell(cell.source | highlight_code(strip_verbatim=True), cell, 'In', 'incolor', '\\ ') )))
 ((* endblock input *))
 
 
@@ -122,16 +122,16 @@
 %===============================================================================
 
 ((*- if charlim is not defined -*))
-    ((* set charlim = 89 *))
+    ((* set charlim = 80 *))
 ((*- endif -*))
 
 ((* block execute_result scoped *))
     ((*- for type in output.data | filter_data_type -*))
         ((*- if type in ['text/plain']*))
-            ((( draw_cell(output.data['text/plain'] | wrap_text(charlim) | escape_latex, cell, 'Out', 'outcolor') )))
+            ((( draw_cell(output.data['text/plain'] | wrap_text(charlim) | escape_latex, cell, 'Out', 'outcolor', '\\ ') )))
         ((* else -*))
             ((( " " )))
-            ((( draw_prompt(cell, 'Out', 'outcolor') )))((( super() )))
+            ((( draw_prompt(cell, 'Out', 'outcolor','') )))((( super() )))
         ((*- endif -*))
     ((*- endfor -*))
 ((* endblock execute_result *))
@@ -148,14 +148,14 @@
 
 % Name: draw_cell
 % Purpose: Renders an output/input prompt
-((*- if draw_cell is not defined -*))
-((* macro draw_cell(text, cell, prompt, prompt_color) -*))
+((*- if draw_cell is not defined -*)) % Required to allow overriding.
+((* macro draw_cell(text, cell, prompt, prompt_color, extra_space) -*))
 ((*- if prompt == 'In' -*))
 ((*- set style = "breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder"-*))
 ((*- else -*))((*- set style = "breakable, boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0"-*))((*-  endif -*))
 
 \begin{tcolorbox}[((( style )))]
-(((- draw_prompt(cell, prompt, prompt_color) )))
+(((- draw_prompt(cell, prompt, prompt_color, extra_space) )))
 \begin{Verbatim}[commandchars=\\\{\}]
 ((( text )))
 \end{Verbatim}
@@ -165,13 +165,13 @@
 
 % Name: draw_prompt
 % Purpose: Renders an output/input prompt
-((* macro draw_prompt(cell, prompt, prompt_color) -*))
+((* macro draw_prompt(cell, prompt, prompt_color, extra_space) -*))
     ((*- if cell.execution_count is defined -*))
     ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
     ((*- else -*))((*- set execution_count = " " -*))((*- endif *))
-    
+
     ((*- if (resources.global_content_filter.include_output_prompt and prompt == 'Out')
          or (resources.global_content_filter.include_input_prompt  and prompt == 'In' ) *))
-\prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}
+\prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}{(((extra_space)))}
     ((*- endif -*))
 ((*- endmacro *))
