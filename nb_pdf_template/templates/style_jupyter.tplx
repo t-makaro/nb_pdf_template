@@ -18,8 +18,6 @@
     \makeatletter
         \newbox\Wrappedcontinuationbox 
         \newbox\Wrappedvisiblespacebox 
-        % These are user customizable e.g. from latex_elements's preamble key. 
-        % Use of \textvisiblespace for compatibility with XeTeX/LuaTeX/fontspec. 
         \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
         \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
         \newcommand*\Wrappedcontinuationindent {3ex } 
