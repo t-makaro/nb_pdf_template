@@ -74,3 +74,5 @@
 ((*- endblock margins -*))
 
 ((* block maketitle *))((* endblock maketitle *))
+
+((* set charlim = 89 *))

@@ -18,6 +18,7 @@
 
 ((* set charlim = 94 *))
 
+((*- block drawmacro -*))
 ((* macro draw_cell(text, cell, prompt, prompt_color) -*))
 ((*- if prompt == 'In' -*))
 ((*- set style = "breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder"-*))
@@ -30,3 +31,4 @@
 \end{Verbatim}
 \end{tcolorbox}
 ((*- endmacro *))
+((*- endblock drawmacro -*))
