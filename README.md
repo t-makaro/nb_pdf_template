@@ -63,7 +63,6 @@ Template | Use
 ---------|-------
 classic.tplx **(Recommended)**| For most accurate recreation of the default Jupyter Notebook style.
 classicm.tplx | m for modified. Similar to classic.tplx, but in/out prompts are above cells instead of in the margin. Bonus left margins are smaller so code cells are wider.
-style_jupyter.tplx | DO NOT use this directly. Inherit from this template if you want to build your own.
 
 ## Tips (Good for any template)
 [Moved to the wiki](https://github.com/t-makaro/nb_pdf_template/wiki/Tips)
