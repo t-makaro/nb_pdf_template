@@ -1,60 +1,23 @@
-((= IPython input/output style =))
+((=- IPython input/output style -=))
 ((*- extends 'base.tplx' -*))
 
 ((*- block packages -*))
     \usepackage[breakable]{tcolorbox}
-    \tcbset{nobeforeafter}
+    \tcbset{nobeforeafter} % prevents tcolorboxes being placing in paragraphs
     \usepackage{float}
-    \floatplacement{figure}{H}
+    \floatplacement{figure}{H} % forces figures to be placed at the correct location
     ((( super() )))
 ((*- endblock packages -*))
 
 ((*- block definitions -*))
     ((( super() )))
 % Pygments definitions
-    (((- resources.latex.pygments_definitions -)))
-
-    ((* block repygments *))
-    %Reconfigured pygments
-    \makeatletter
-    \expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
-    \expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[HTML]{008800}{##1}}} %numbers
-    \expandafter\def\csname PY@tok@nn\endcsname{\def\PY@tc##1{\textcolor[HTML]{000000}{##1}}} %imports
-    \expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[HTML]{008000}{##1}}} %operator.word
-    \expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[HTML]{AA22FF}{\codetrue##1\codefalse}}} %operator
-    \makeatother
-
-    \makeatletter
-    \newcommand*\@iflatexlater{\@ifl@t@r\fmtversion}
-    \@iflatexlater{2016/03/01}{
-	    \newcommand{\wordboundary}{4095}}{
-	    \newcommand{\wordboundary}{255}}
-    \makeatother
-
-    \newif\ifcode
-    \codefalse
-    \definecolor{Grey}{rgb}{0.40,0.40,0.40}
-    %If using XeLaTeX, use magic to not highlight . operators with purple.
-    \ifdefined\XeTeXcharclass
-    \XeTeXinterchartokenstate = 1
-    \newXeTeXintercharclass \mycharclassGrey
-    \XeTeXcharclass `. \mycharclassGrey
-    \XeTeXinterchartoks 0 \mycharclassGrey   = {\bgroup\ifcode\color{Grey}\else\fi}
-
-    \XeTeXinterchartoks \wordboundary \mycharclassGrey = {\bgroup\ifcode\color{Grey}\else\fi}
-
-    \XeTeXinterchartoks \mycharclassGrey 0   = {\egroup}
-    \XeTeXinterchartoks \mycharclassGrey \wordboundary = {\egroup}
-    \fi %end magical operator highlighting
-    %End Reconfigured Pygments
-    ((* endblock repygments *))
+    (((- resources.latex.pygments_definitions )))
 
     % For linebreaks inside Verbatim environment from package fancyvrb. 
     \makeatletter
         \newbox\Wrappedcontinuationbox 
         \newbox\Wrappedvisiblespacebox 
-        % These are user customizable e.g. from latex_elements's preamble key. 
-        % Use of \textvisiblespace for compatibility with XeTeX/LuaTeX/fontspec. 
         \newcommand*\Wrappedvisiblespace {\textcolor{red}{\textvisiblespace}} 
         \newcommand*\Wrappedcontinuationsymbol {\textcolor{red}{\llap{\tiny$\m@th\hookrightarrow$}}} 
         \newcommand*\Wrappedcontinuationindent {3ex } 
@@ -138,8 +101,8 @@
     
     % prompt
     ((*- block style_prompt *))
-    \newcommand{\prompt}[3]{
-        \llap{{\color{#2}[#3]: \ }}\vspace{-1.25em}
+    \newcommand{\prompt}[4]{
+        \llap{{\color{#2}[#3]: #4}}\vspace{-1.25em}
     }
     ((* endblock style_prompt *))
     
@@ -150,7 +113,7 @@
 %===============================================================================
 
 ((* block input scoped *))
-    ((( draw_cell(cell.source | highlight_code(strip_verbatim=True), cell, 'In', 'incolor') )))
+    ((( draw_cell(cell.source | highlight_code(strip_verbatim=True), cell, 'In', 'incolor', '\\hspace{4pt}') )))
 ((* endblock input *))
 
 
@@ -159,16 +122,16 @@
 %===============================================================================
 
 ((*- if charlim is not defined -*))
-    ((* set charlim = 89 *))
+    ((* set charlim = 80 *))
 ((*- endif -*))
 
 ((* block execute_result scoped *))
     ((*- for type in output.data | filter_data_type -*))
         ((*- if type in ['text/plain']*))
-            ((( draw_cell(output.data['text/plain'] | wrap_text(charlim) | escape_latex, cell, 'Out', 'outcolor') )))
+            ((( draw_cell(output.data['text/plain'] | wrap_text(charlim) | escape_latex, cell, 'Out', 'outcolor', '\\hspace{3.5pt}') )))
         ((* else -*))
             ((( " " )))
-            ((( draw_prompt(cell, 'Out', 'outcolor') )))((( super() )))
+            ((( draw_prompt(cell, 'Out', 'outcolor','') )))((( super() )))
         ((*- endif -*))
     ((*- endfor -*))
 ((* endblock execute_result *))
@@ -185,14 +148,14 @@
 
 % Name: draw_cell
 % Purpose: Renders an output/input prompt
-((*- if draw_cell is not defined -*))
-((* macro draw_cell(text, cell, prompt, prompt_color) -*))
+((*- if draw_cell is not defined -*)) % Required to allow overriding.
+((* macro draw_cell(text, cell, prompt, prompt_color, extra_space) -*))
 ((*- if prompt == 'In' -*))
 ((*- set style = "breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder"-*))
 ((*- else -*))((*- set style = "breakable, boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0"-*))((*-  endif -*))
 
 \begin{tcolorbox}[((( style )))]
-(((- draw_prompt(cell, prompt, prompt_color) )))
+(((- draw_prompt(cell, prompt, prompt_color, extra_space) )))
 \begin{Verbatim}[commandchars=\\\{\}]
 ((( text )))
 \end{Verbatim}
@@ -202,13 +165,13 @@
 
 % Name: draw_prompt
 % Purpose: Renders an output/input prompt
-((* macro draw_prompt(cell, prompt, prompt_color) -*))
+((* macro draw_prompt(cell, prompt, prompt_color, extra_space) -*))
     ((*- if cell.execution_count is defined -*))
     ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
     ((*- else -*))((*- set execution_count = " " -*))((*- endif *))
-    
+
     ((*- if (resources.global_content_filter.include_output_prompt and prompt == 'Out')
          or (resources.global_content_filter.include_input_prompt  and prompt == 'In' ) *))
-\prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}
+\prompt{(((prompt)))}{(((prompt_color)))}{(((execution_count)))}{(((extra_space)))}
     ((*- endif -*))
 ((*- endmacro *))
