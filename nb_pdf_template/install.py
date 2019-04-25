@@ -4,7 +4,7 @@ import nbconvert
 import argparse
 
 
-TEMPLATES = {"style_jupyter.tplx", "classic.tplx", "classicm.tplx"}
+TEMPLATES = {"classic.tplx", "classicm.tplx"}
 
 
 def install():
@@ -23,8 +23,6 @@ def install():
         raise ValueError("Templates not found")
 
     for template in TEMPLATES:
-        if template == 'style_jupyter_minted.tplx':
-            continue
         src = os.path.join(template_path, template)
         shutil.copy(src, dst)
 
