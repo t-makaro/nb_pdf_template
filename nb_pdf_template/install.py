@@ -1,8 +1,12 @@
 import os
 import shutil
 import nbconvert
-import argparse
+from warnings import warn
 
+if nbconvert.__version__ < '5.5':
+    warn('Template may not work with your version of nbconvert. '
+         'Please either upgrade nbconvert to version >=5.5 '
+         'or downgrade nb_pdf_template to <4.')
 
 TEMPLATES = {"classic.tplx", "classicm.tplx"}
 
