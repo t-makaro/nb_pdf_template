@@ -1,10 +1,14 @@
 import os
 import shutil
 import nbconvert
-import argparse
+from warnings import warn
 
+if nbconvert.__version__ < '5.5':
+    warn('Template may not work with your version of nbconvert. '
+         'Please either upgrade nbconvert to version >=5.5 '
+         'or downgrade nb_pdf_template to <4.')
 
-TEMPLATES = {"style_jupyter.tplx", "classic.tplx", "classicm.tplx"}
+TEMPLATES = {"classic.tplx", "classicm.tplx"}
 
 
 def install():
@@ -23,8 +27,6 @@ def install():
         raise ValueError("Templates not found")
 
     for template in TEMPLATES:
-        if template == 'style_jupyter_minted.tplx':
-            continue
         src = os.path.join(template_path, template)
         shutil.copy(src, dst)
 
