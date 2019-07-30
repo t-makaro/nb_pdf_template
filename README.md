@@ -6,6 +6,10 @@ This template was designed to make converted jupyter notebooks look (almost) ide
 
 As of nbconvert 5.5.0, the majority of these improvements have been merged into nbconvert's default template. Version 3.x of this package will continue to support nbconvert 5.5.0 and lower, whereas in the future version 4.x will only support nbconvert 5.5.0 and newer. Versions 3.x, and 4.x will overlap support for nbconvert version 5.5.0.
 
+## Note for nbconvert 6.0.0
+
+nbconvert 6.0.0 is not yet released, but it will be changing the conversion template in a backward incompatible manner. A version 5.x of this repository will be made to support nbconvert >=6.0.0
+
 ## Improvements
 1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook).
 2. Sections are no longer numbered automatically (notebooks don't number sections so the pdf shouldn't).
