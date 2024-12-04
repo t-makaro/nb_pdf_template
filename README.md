@@ -2,13 +2,9 @@
 A more accurate representation of jupyter notebooks when converting to pdfs.
 This template was designed to make converted jupyter notebooks look (almost) identical to the actual notebook. If something doesn't exist in the original notebook then it doesn't belong in the conversion.
 
-## Note for nbconvert 5.5.0
+## Update for 7.0
 
-As of nbconvert 5.5.0, the majority of these improvements have been merged into nbconvert's default template. Version 3.x of this package will continue to support nbconvert 5.5.0 and lower, whereas in the future version 4.x will only support nbconvert 5.5.0 and newer. Versions 3.x, and 4.x will overlap support for nbconvert version 5.5.0.
-
-## Note for nbconvert 6.0.0
-
-nbconvert 6.0.0 is not yet released, but it will be changing the conversion template in a backward incompatible manner. A version 5.x of this repository will be made to support nbconvert >=6.0.0
+Work is in progress for updating this for nbconvert 7.0. Minimal changes were needed to make the template itself work, so it should work with nbconvert 6.0 as well, but officially nbconvert 5 and 6 won't be supported. Once I have figured out the new template install process, I will push a release.
 
 ## Improvements
 1. \maketitle is removed (If you want a title then add a markdown cell to the top of your notebook).
