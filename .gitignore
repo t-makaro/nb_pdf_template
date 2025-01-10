@@ -79,6 +79,7 @@ celerybeat-schedule
 .env
 
 # virtualenv
+.venv/
 venv/
 ENV/
 
@@ -96,3 +97,6 @@ example/_minted-test
 *.out
 *.aux
 *.synctex.gz
+
+# image files
+*.afphoto

@@ -1,0 +1,32 @@
+((*- extends 'index.tex.j2' -*))
+
+((*- block packages -*))
+    \usepackage{needspace}
+    ((( super() )))
+((*- endblock packages -*))
+
+((*- block margins -*))
+    \geometry{verbose,tmargin=.5in,bmargin=.7in,lmargin=.5in,rmargin=.5in}
+((*- endblock margins -*))
+
+((*- block style_prompt *))
+    \newcommand{\prompt}[3]{
+        \needspace{1.1cm}
+        \noindent{\color{#2}#1 [#3]:}
+    }
+((* endblock style_prompt *))
+
+((* set charlim = 94 *))
+
+((* macro draw_cell(text, cell, prompt, prompt_color, extra_space) -*))
+((*- if prompt == 'In' -*))
+((*- set style = "breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder"-*))
+((*- else -*))((*- set style = "breakable, boxrule=.5pt, size=fbox, pad at break*=1mm, opacityfill=0"-*))((*-  endif -*))
+
+(((- draw_prompt(cell, prompt, prompt_color) )))
+\begin{tcolorbox}[((( style )))]
+\begin{Verbatim}[commandchars=\\\{\}]
+((( text )))
+\end{Verbatim}
+\end{tcolorbox}
+((*- endmacro *))
