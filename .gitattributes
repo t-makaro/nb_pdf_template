@@ -1,0 +1,2 @@
+# Recursively mark all files in a directory and its subdirectories as vendored
+example/** linguist-vendored
